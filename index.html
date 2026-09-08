@@ -1,278 +1,325 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beardster Forano - Tagli e Barbe Tradizionali</title>
-    <!-- Importazione dei font personalizzati da Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Special+Elite&display=swap" rel="stylesheet">
-    
+    <title>BEARDSTER Barber Shop | Forano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* RESET E BASI */
+        /* Definizione dei temi: Dark e Light */
+        :root[data-theme="dark"] {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --accent-color: #d4af37;
+            --text-main: #ffffff;
+            --text-muted: #b0b0b0;
+            --section-alt: #161616;
+            --border-color: #222;
+        }
+
+        :root[data-theme="light"] {
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --accent-color: #b89728;
+            --text-main: #212529;
+            --text-muted: #6c757d;
+            --section-alt: #e9ecef;
+            --border-color: #dee2e6;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         body {
-            font-family: 'Special Elite', monospace; /* Stile macchina da scrivere vintage */
-            background-color: #1a1a1a;
-            color: #e0e0e0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             line-height: 1.6;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
+        /* Pulsante Tema in alto a destra */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: var(--card-bg);
+            border: 2px solid var(--accent-color);
+            color: var(--text-main);
+            padding: 10px 15px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        h1, h2, h3 {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #fff;
-        }
-
-        /* HEADER E NAVIGAZIONE */
         header {
-            background-color: #141414;
-            padding: 15px 0;
-            border-bottom: 3px solid #3d3d3d; /* Linea di separazione spessa e materica */
-        }
-
-        header .container {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('logo.jpg') no-repeat center center/cover;
+            height: 90vh;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            height: 60px;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-        }
-
-        nav ul li {
-            margin-left: 25px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1rem;
-        }
-
-        /* HERO SECTION (Sezione principale in alto) */
-        #hero {
-            background-color: #111;
-            padding: 100px 20px;
-            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            border-bottom: 3px solid #3d3d3d;
+            padding: 0 20px;
         }
 
-        .hero-content {
-            background-color: rgba(20, 20, 20, 0.9);
-            padding: 40px;
-            border: 2px solid #3d3d3d;
-            max-width: 800px;
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            color: #ffffff;
+            text-transform: uppercase;
         }
 
-        #hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
+        header h1 span {
+            color: var(--accent-color);
         }
 
-        #hero p {
+        header p {
             font-size: 1.2rem;
+            max-width: 600px;
             margin-bottom: 30px;
+            color: #e0e0e0;
+            font-style: italic;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
-            background-color: transparent;
-            border: 2px solid #fff;
-            color: #fff;
+            background-color: var(--accent-color);
+            color: #000;
+            padding: 14px 30px;
+            font-size: 1rem;
+            font-weight: 700;
             text-decoration: none;
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            transition: background-color 0.3s ease;
+            border-radius: 30px;
+            transition: transform 0.2s, background-color 0.2s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
 
         .btn:hover {
-            background-color: #fff;
-            color: #1a1a1a;
+            transform: scale(1.05);
         }
 
-        /* SEZIONI GENERICHE */
         section {
-            padding: 60px 0;
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        h2 {
-            font-size: 2.3rem;
-            margin-bottom: 10px;
+        .section-title {
             text-align: center;
+            font-size: 2rem;
+            margin-bottom: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .divider {
-            border: 0;
-            height: 3px;
-            background: #3d3d3d;
-            width: 120px;
-            margin: 0 auto 40px auto;
+        .section-title span {
+            color: var(--accent-color);
         }
 
-        /* LA STORIA */
-        .storia-flex {
-            display: flex;
-            align-items: center;
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             gap: 40px;
-            flex-wrap: wrap;
+            align-items: center;
         }
 
-        .storia-text {
-            flex: 1;
-            min-width: 280px;
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            header h1 {
+                font-size: 2.2rem;
+            }
         }
 
-        .storia-text h2, .storia-text .divider {
-            text-align: left;
-            margin-left: 0;
+        .info-card, .review-card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
 
-        .storia-img {
-            width: 100%;
-            max-width: 400px;
-            border: 5px solid #3d3d3d;
-            filter: grayscale(80%); /* Effetto retrò in bianco e nero */
+        .info-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
         }
 
-        /* SERVIZI */
-        #servizi {
-            background-color: #141414;
-            border-top: 3px solid #3d3d3d;
-            border-bottom: 3px solid #3d3d3d;
+        .info-card p {
+            color: var(--text-muted);
+            margin-bottom: 10px;
         }
 
-        .servizi-grid {
+        /* Sezione Galleria Immagini */
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 20px;
         }
 
-        .servizio-item {
-            background-color: #1a1a1a;
-            padding: 30px;
-            border: 1px solid #3d3d3d;
+        .gallery-item {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
             text-align: center;
         }
 
-        .servizio-item h3 {
+        .gallery-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item .placeholder-text {
+            padding: 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .review-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
             margin-bottom: 15px;
         }
 
-        /* PRENOTA / CONTATTI */
-        #prenota {
-            text-align: center;
+        .review-card .author {
+            font-weight: 600;
+            color: var(--accent-color);
         }
 
-        /* FOOTER */
+        .stars {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
         footer {
+            background-color: var(--section-alt);
             text-align: center;
-            padding: 30px;
-            background-color: #141414;
-            border-top: 3px solid #3d3d3d;
-        }
-
-        footer p {
+            padding: 40px 20px;
+            color: var(--text-muted);
             font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
         }
     </style>
 </head>
 <body>
 
-    <!-- INTESTAZIONE -->
+    <!-- Pulsante per cambiare tema -->
+    <button class="theme-toggle" id="themeToggleBtn">🌙 Modalità Notte</button>
+
     <header>
-        <div class="container">
-            <span class="logo" style="font-family: 'Oswald'; font-size: 1.5rem; font-weight: bold; color: #fff;">BEARDSTER</span>
-            <nav>
-                <ul>
-                    <li><a href="#storia">La Storia</a></li>
-                    <li><a href="#servizi">Servizi</a></li>
-                    <li><a href="#prenota">Contatti</a></li>
-                </ul>
-            </nav>
-        </div>
+        <h1>BEARDSTER <span>Barber Shop</span></h1>
+        <p>"Old o new stile? Qui non avrai un taglio di capelli, qui c'è il tuo stile che ti aspetta!"</p>
+        <a href="tel:3298511220" class="btn">CHIAMA ORA: 329 851 1220</a>
     </header>
 
-    <!-- SEZIONE HERO -->
-    <section id="hero">
-        <div class="hero-content">
-            <h1>A Forano, ci prendiamo cura della tua barba. Dal 2023.</h1>
-            <p>Non facciamo magie, conosciamo il mestiere. Venite a trovarci per un taglio classico o una barba fatta a regola d'arte.</p>
-            <a href="#prenota" class="btn">Siediti in poltrona</a>
-        </div>
-    </section>
-
-    <!-- SEZIONE STORIA -->
-    <section id="storia" class="container">
-        <div class="storia-flex">
-            <div class="storia-text">
-                <h2>Il Nostro Angolo</h2>
-                <hr class="divider">
-                <p>Siamo nati dal desiderio di riportare la barberia alle origini. Niente fronzoli, solo panni caldi, rasoi a mano libera e prodotti scelti con cura. Il nostro shop a Forano è un posto dove staccare la spina per mezz'ora.</p>
+    <section>
+        <h2 class="section-title">L'Esperienza <span>Tradizione & Stile</span></h2>
+        <div class="grid-2">
+            <div>
+                <p style="margin-bottom: 15px; color: var(--text-muted);">Con un'esperienza trentennale nella cura e nell'aspetto, <strong>BEARDSTER</strong> a Forano è il punto di riferimento per chi cerca precisione, stile e un'atmosfera unica.</p>
+                <p style="color: var(--text-muted);">Dalle sfumature più moderne ai trattamenti classici per barba e capelli, ogni cliente riceve un'attenzione sartoriale e su misura.</p>
             </div>
-            <!-- Sostituisci l'immagine con una foto reale del locale -->
-            <div style="background: #222; height: 250px; display: flex; align-items: center; justify-content: center; border: 5px solid #3d3d3d; flex: 1; min-width: 280px; color: #777;">
-                [Foto Reale Shop]
+            <div class="info-card">
+                <h3>Dove Siamo & Contatti</h3>
+                <p>📍 <strong>Indirizzo:</strong> Via Cavour, 3, 02044 Forano (RI)</p>
+                <p>📞 <strong>Telefono:</strong> (+39) 329 851 1220</p>
+                <p>⭐ <strong>Valutazione Google:</strong> 4.8 / 5 (eccellenza certificata)</p>
+                <br>
+                <a href="https://maps.google.com/?q=Via+Cavour+3+02044+Forano+RI" target="_blank" class="btn" style="padding: 10px 20px; font-size: 0.9rem;">Ottieni Indicazioni</a>
             </div>
         </div>
     </section>
 
-    <!-- SEZIONE SERVIZI -->
-    <section id="servizi">
-        <div class="container">
-            <h2>Cosa Facciamo</h2>
-            <hr class="divider">
-            <div class="servizi-grid">
-                <div class="servizio-item">
-                    <h3>Taglio Classico</h3>
-                    <p>Forbice e pettine, come una volta. Sfumature tradizionali e cura dei dettagli.</p>
-                </div>
-                <div class="servizio-item">
-                    <h3>Regolazione Barba</h3>
-                    <p>Modelliamo la tua barba rispettando la forma del viso. Trattamento con olio finale.</p>
-                </div>
-                <div class="servizio-item">
-                    <h3>Rasatura Completa</h3>
-                    <p>L'esperienza del panno caldo, pre-barba e rasoio a mano libera per una pelle liscia.</p>
-                </div>
+    <!-- SEZIONE IMMAGINI / GALLERY -->
+    <section style="background-color: var(--section-alt);">
+        <h2 class="section-title">I Nostri <span>Lavori</span></h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;">Ecco uno spazio dedicato alle foto del negozio e dei tagli realizzati.</p>
+        
+        <div class="gallery-grid">
+            <!-- IMMAGINE 1 -->
+            <div class="gallery-item">
+                <!-- Sostituisci il link qui sotto tra le virgolette src="" con il link della tua foto -->
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?auto=format&fit=crop&w=600&q=80" alt="Taglio Barba e Capelli">
+                <div class="placeholder-text">Taglio classico & Styling</div>
+            </div>
+            <!-- IMMAGINE 2 -->
+            <div class="gallery-item">
+                <!-- Sostituisci il link qui sotto tra le virgolette src="" con il link della tua foto -->
+                <img src="https://images.unsplash.com/photo-1512864082165-27f10bcf5354?auto=format&fit=crop&w=600&q=80" alt="Interno Barber Shop">
+                <div class="placeholder-text">L'atmosfera del negozio</div>
+            </div>
+            <!-- IMMAGINE 3 -->
+            <div class="gallery-item">
+                <!-- Sostituisci il link qui sotto tra le virgolette src="" con il link della tua foto -->
+                <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=600&q=80" alt="Cura della Barba">
+                <div class="placeholder-text">Cura e rifinitura barba</div>
             </div>
         </div>
     </section>
 
-    <!-- SEZIONE PRENOTA / CONTATTI -->
-    <section id="prenota" class="container">
-        <h2>Passa a Trovarci</h2>
-        <hr class="divider">
-        <p>Siamo in Via Roma 15, Forano (RI).<br>Lunedì - Sabato: 09:00 - 19:30</p>
+    <section>
+        <h2 class="section-title">Dicono di <span>Noi</span></h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Emanuele è una persona garbata e gentile, con uno spiccato senso dell'humor!!! Contraddistinto da un look sempre impeccabile!!! Veloce nel servizio."</p>
+                <div class="author">- Marco Teofili</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p>"Taglio perfetto, particolare cura nei dettagli. Consigliatissimo a chiunque cerchi professionalità vera."</p>
+                <div class="author">- Alessandro Tordi</div>
+            </div>
+            <div class="review-card">
+                <div class="stars">★★★★☆</div>
+                <p>"Sempre disponibile ed efficiente 😊 Un punto di riferimento sicuro a Forano."</p>
+                <div class="author">- Romano Gregori</div>
+            </div>
+        </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
-        <p>&copy; 2023 Beardster Forano. Fatto a mano da Lollo.</p>
+        <p>&copy; BEARDSTER Barber Shop - 02044 - Forano (RI).</p>
+        <p>(+39) 329 851 1220</p>
     </footer>
+
+    <!-- Script JavaScript per gestire il cambio Giorno/Notte -->
+    <script>
+        const toggleBtn = document.getElementById('themeToggleBtn');
+        const htmlElement = document.documentElement;
+
+        toggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                htmlElement.setAttribute('data-theme', 'light');
+                toggleBtn.textContent = '☀️ Modalità Giorno';
+            } else {
+                htmlElement.setAttribute('data-theme', 'dark');
+                toggleBtn.textContent = '🌙 Modalità Notte';
+            }
+        });
+    </script>
 
 </body>
 </html>
