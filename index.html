@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" data-theme="dark">
+<html lang="it" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -251,7 +251,7 @@
 <body>
 
     <!-- Pulsante per cambiare tema -->
-    <button class="theme-toggle" id="themeToggleBtn">🌙 Modalità Notte</button>
+    <!-- <button class="theme-toggle" id="themeToggleBtn">🌙 Modalità Notte</button>  -->
 
     <header>
         <h1>BEARDSTER <span>Barber Shop</span></h1>
@@ -339,23 +339,5 @@
         <p>&copy; BEARDSTER Barber Shop - 02044 - Forano (RI).</p>
         <p> 329 851 1220 / Martedì - Sabato 9:00-19:30</p>
     </footer>
-
-    <!-- Script JavaScript per gestire il cambio Giorno/Notte -->
-    <script>
-        const toggleBtn = document.getElementById('themeToggleBtn');
-        const htmlElement = document.documentElement;
-
-        toggleBtn.addEventListener('click', () => {
-            const currentTheme = htmlElement.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                htmlElement.setAttribute('data-theme', 'light');
-                toggleBtn.textContent = '☀️ Modalità Giorno';
-            } else {
-                htmlElement.setAttribute('data-theme', 'dark');
-                toggleBtn.textContent = '🌙 Modalità Notte';
-            }
-        });
-    </script>
-
 </body>
 </html>
