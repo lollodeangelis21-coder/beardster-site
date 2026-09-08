@@ -269,9 +269,60 @@
         .footer-booking-link:hover {
             opacity: 0.8;
         }
+
+        /* Pulsante mobile per chiamata e prenotazione */
+        .mobile-cta {
+    display: none;
+}
+
+        @media (max-width: 768px) {
+            .mobile-cta {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                z-index: 999;
+                box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+            }
+
+            .mobile-cta a {
+                padding: 14px 10px;
+                text-align: center;
+                text-decoration: none;
+                font-weight: 700;
+                font-size: 0.9rem;
+            }
+
+            .mobile-cta-call {
+                background-color: var(--card-bg);
+                color: var(--text-main);
+                border-top: 2px solid var(--accent-color);
+            }
+
+            .mobile-cta-booking {
+                background-color: var(--accent-color);
+                color: #000;
+                border-top: 2px solid var(--accent-color);
+            }
+        }
     </style>
 </head>
 <body>
+
+    <div class="mobile-cta">
+        <a href="tel:3298511220" class="mobile-cta-call">
+            CHIAMA
+        </a>
+
+        <a href="https://..." 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-cta-booking">
+            PRENOTA
+        </a>
+    </div>
 
     <!-- Pulsante per cambiare tema -->
     <!-- <button class="theme-toggle" id="themeToggleBtn">🌙 Modalità Notte</button>  -->
