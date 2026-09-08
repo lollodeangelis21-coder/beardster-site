@@ -246,6 +246,24 @@
             font-size: 0.9rem;
             border-top: 1px solid var(--border-color);
         }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .footer-booking-link {
+            color: var(--accent-color);
+            text-decoration: underline;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+
+        .footer-booking-link:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
@@ -253,7 +271,7 @@
     <!-- Pulsante per cambiare tema -->
     <!-- <button class="theme-toggle" id="themeToggleBtn">🌙 Modalità Notte</button>  -->
 
-    <header>
+    <header id="top">
         <h1>BEARDSTER <span>Barber Shop</span></h1>
         <p>"Old o new stile? Qui non avrai un taglio di capelli, qui c'è il tuo stile che ti aspetta!"</p>
         <a href="tel:3298511220" class="btn btn-call">CHIAMA ORA: 329 851 1220</a>
@@ -338,6 +356,9 @@
     <footer>
         <p>&copy; BEARDSTER Barber Shop - 02044 - Forano (RI).</p>
         <p> 329 851 1220 / Martedì - Sabato 9:00-19:30</p>
+        <p style="margin-top: 12px;">
+            <a href="#top" class="footer-booking-link">↑ PRENOTA ORA</a>
+        </p>
     </footer>
 </body>
 </html>
